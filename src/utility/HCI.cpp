@@ -102,7 +102,7 @@ void HCIClass::poll()
 
 void HCIClass::poll(unsigned long timeout)
 {
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(COEXISTENCE) 
   digitalWrite(NINA_RTS, LOW);
 #endif
 
@@ -120,7 +120,7 @@ void HCIClass::poll(unsigned long timeout)
         if (_debug) {
           dumpPkt("HCI ACLDATA RX <- ", _recvIndex, _recvBuffer);
         }
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(COEXISTENCE) 
         digitalWrite(NINA_RTS, HIGH);
 #endif
         int pktLen = _recvIndex - 1;
@@ -128,7 +128,7 @@ void HCIClass::poll(unsigned long timeout)
 
         handleAclDataPkt(pktLen, &_recvBuffer[1]);
 
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(COEXISTENCE) 
         digitalWrite(NINA_RTS, LOW);  
 #endif
       }
@@ -137,7 +137,7 @@ void HCIClass::poll(unsigned long timeout)
         if (_debug) {
           dumpPkt("HCI EVENT RX <- ", _recvIndex, _recvBuffer);
         }
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(COEXISTENCE) 
         digitalWrite(NINA_RTS, HIGH);
 #endif
         // received full event
@@ -146,7 +146,7 @@ void HCIClass::poll(unsigned long timeout)
 
         handleEventPkt(pktLen, &_recvBuffer[1]);
 
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(COEXISTENCE) 
         digitalWrite(NINA_RTS, LOW);
 #endif
       }
@@ -159,7 +159,7 @@ void HCIClass::poll(unsigned long timeout)
     }
   }
 
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2) || defined(COEXISTENCE) 
   digitalWrite(NINA_RTS, HIGH);
 #endif
 }

@@ -39,7 +39,6 @@ int BLELocalDevice::begin()
   // reset the NINA in BLE mode
   pinMode(SPIWIFI_SS, OUTPUT);
   pinMode(NINA_RESETN, OUTPUT);
-  
   digitalWrite(SPIWIFI_SS, LOW);
 #endif
 
@@ -57,7 +56,7 @@ int BLELocalDevice::begin()
 #endif
 
 
-#ifdef ARDUINO_AVR_UNO_WIFI_REV2
+#if defined(ARDUINO_AVR_UNO_WIFI_REV2)
   // set SS HIGH
   digitalWrite(SPIWIFI_SS, HIGH);
 
