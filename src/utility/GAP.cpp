@@ -110,7 +110,7 @@ int GAPClass::advertise()
     advertisingDataLen += (2 + _manufacturerDataLength);
   }
 
-  if (_serviceData && _serviceDataLength > 0 && advertisingDataLen >= (_serviceDataLength + 4)) {
+  if (_serviceData && _serviceDataLength > 0) { //&& advertisingDataLen >= (_serviceDataLength + 4)) {
     advertisingData[advertisingDataLen++] = _serviceDataLength + 3;
     advertisingData[advertisingDataLen++] = 0x16;
 

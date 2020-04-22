@@ -49,11 +49,10 @@ public:
   void setConnectable(bool connectable);
 
   void setEventHandler(BLEDeviceEvent event, BLEDeviceEventHandler eventHandler);
+  void setAdvertisedServiceData(uint16_t uuid, const uint8_t data[], int length);
 
 protected:
   friend class BLELocalCharacteristic;
-
-  void setAdvertisedServiceData(uint16_t uuid, const uint8_t data[], int length);
 
 protected:
   friend class HCIClass;
